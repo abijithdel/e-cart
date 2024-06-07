@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<h1 class='text-center'>{{us_pas_not_mach}}</h1>
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<form method="post">
+    {% csrf_token %}
+    <h3>Login Here</h3>
+
+    <label for="username">Username</label>
+    <input type="text" placeholder="Email or Phone" id="username" name="username">
+
+    <label for="password">Password</label>
+    <input type="password" placeholder="Password" id="password" name="password">
+
+    <button>Log In</button>
+    <div class="social">
+      <div class="go"><i class="bi bi-house"></i>  HOME</div>
+      <div class="fb"><i class="bi bi-r-circle"></i>  <a href="">i have a account</a></div>
+    </div>
+</form>
+
+{% endblock  %}

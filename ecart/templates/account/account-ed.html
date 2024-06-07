@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Edit {{user.username}} Account{% endblock %}
+
+{% block content %}
+{% load static %}
+<h1 class="text-center">EDIT YOUR PROFILE</h1>
+<div class="d-flex align-items-center justify-content-center">
+    <div class="mt-4">
+        <form method="post" class="edit-acc">
+            {% csrf_token %}
+            <label for="first_name">First Name:</label>
+            <br>
+            <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}" class="form-control"><br>
+            <label for="last_name">Last Name:</label>
+            <br>
+            <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}" class="form-control"><br>
+            <label for="username">Username:</label>
+            <br>
+            <input type="text" id="username" name="username" value="{{ user.username }}" class="form-control"><br>
+            <label for="email">Email:</label>
+            <br>
+            <input type="email" id="email" name="email" value="{{ user.email }}" class="form-control"><br>
+            
+            <button type="submit" class="btn btn-success mt-4">Save</button> 
+            <a href="{% url 'account' %}" class="text-center">Back</a>
+        </form>
+        
+    </div>
+</div>
+
+
+{% endblock  %}

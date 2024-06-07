@@ -7,7 +7,7 @@
 <div class="container text-white mt-4 ">
     <div class="row ac-gb ">
         <h1 class="text-center">Account</h1>
-        <p class="text-center text-success">{{saccess}}</p>
+        <p class="text-center text-success">{{saccess}}{{responses}}</p>
         <div class="col-12 col-md-6 col-lg-4">
             <h3 class="l-ac">USER : {{user.username}}</h3>
             <h5 class="l-ac">{{user.email}}</h5>
@@ -15,13 +15,15 @@
             <h5 class="l-ac">Last Name : {{user.last_name}}</h5>
             <p class="l-ac"> Join Date : {{user.date_joined}}</p>
             <p class="l-ac"> Last Login : {{user.last_login}}</p>
+            <a href="">log out</a>
         </div>
 
         <div class="col-12 col-md-6 col-lg-4">
             <a href=""><button class="btn btn-secondary">Cart</button></a>
             <a href="{% url 'edit_account' %}"><button class="btn btn-secondary">Edit Account</button></a>
-            <a href=""><button class="btn btn-secondary">Cheng Password</button></a>
-            <a href=""><button class="btn btn-danger">Delete Account</button></a>
+            <a href="{% url 'newpass' %}"><button class="btn btn-secondary">Cheng Password</button></a>
+            <a href="{% url 'delete_account' %}"><button class="btn btn-danger">Delete Account</button></a>
+           
         </div>
 
         <div class="col-12 col-md-6 col-lg-4">

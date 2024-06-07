@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 # Create your views here.
+
 def login(req):
     if req.method == 'POST':
         uname = req.POST.get('username')
@@ -18,7 +19,7 @@ def login(req):
             return render(req,'index.html')
         else:
             us_pas_not_mach='Check Username or password'
-            return render(req,'account/index.html',{'us_pas_not_mach':us_pas_not_mach})
+            return render(req,'account/login.html',{'us_pas_not_mach':us_pas_not_mach})
 
     return render(req,'account/login.html')
 
@@ -63,4 +64,33 @@ def edit_profile(req):
         user.save()
         saccessf = 'Profile saccessfully Edited'
         return render(req, 'account/account.html', {'user': user , "saccess":saccessf})
+    else:
+        pass
     return render(req, 'account/account-ed.html', {'user': user})
+
+
+def reset_pass(req):
+    user = req.user
+    if req.method == 'POST':
+        pass1 = req.POST.get('newpass')
+        pass2 = req.POST.get('cpass')
+        if pass1 != pass2:
+            response ="Check Conform Password"
+            return render(req,'account/pass-change.html',{'response':response})
+
+        else:
+          user.set_password(pass1)
+          update_session_auth_hash(req, user)
+          user.save()
+          responses = "Password Changed"
+          return render(req,'account/account.html',{'responses':responses})
+    return render(req,'account/pass-change.html')
+
+
+def delete_accout_user(req):
+    if req.method == 'POST':
+        user = req.user
+        user.delete()
+        alert = 'Your Accout Deleted'
+        return render(req,'account/signup.html',{'alert':alert})
+    return render(req,'account/delete_account.html')

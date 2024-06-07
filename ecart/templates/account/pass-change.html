@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Change Password{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="d-flex align-items-center justify-content-center mt-4 text-white">
+    <form action="" method="post">
+        {% csrf_token %}
+        <h1 class="text-center">Change Password</h1>
+        <p class="text-danger">{{response}}</p>
+        <label for="newpass">New Password</label>
+        <br>
+        <input type="password" name="newpass" placeholder="New Password" class="form-control">
+        <br>
+        <label for="cpass">Conform Password</label>
+        <br>
+        <input type="password" name="cpass" placeholder="Conform Password" class="form-control">
+        <br>
+        <div class="text-danger mt-2">
+            <h2 class="text-center">{{response}}</h2>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+</div>
+
+
+
+{% endblock  %}

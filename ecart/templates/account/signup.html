@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% block title %}SIGN UP{% endblock %}
 
 {% block content %}
 {% load static %}
@@ -12,7 +13,7 @@
     {% csrf_token %}
     <h3>Create Account</h3>
 
-    <h4 class="text-ganger">{{pass_not_mach}} {{username_taken}}</h4>
+    <h4 class="text-ganger">{{pass_not_mach}} {{alert}} {{username_taken}}</h4>
     <label for="firstname" class="label">First Name</label>
     <input type="text" placeholder="First Name" id="firstname" name="firstname" class="signup-in">
 

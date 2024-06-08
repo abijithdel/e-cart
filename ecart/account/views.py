@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate,login  as auth_login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth import logout as auth_logout
 # Create your views here.
 
 def login(req):
@@ -16,7 +17,7 @@ def login(req):
         if user is not None:
             auth_login(req,user)
             
-            return render(req,'index.html')
+            return redirect('home')
         else:
             us_pas_not_mach='Check Username or password'
             return render(req,'account/login.html',{'us_pas_not_mach':us_pas_not_mach})
@@ -44,7 +45,7 @@ def signup(req):
             users = User.objects.create_user(username=uname, email=email, password=pass1, first_name=fname, last_name=lname)
             users.save()
             wel_mess='Welcome',fname,'Login Now'
-            return render(req,'account/login.html',{'wel_mess':wel_mess})
+            return redirect('login')
             
     return render(req,'account/signup.html')
 
@@ -94,3 +95,7 @@ def delete_accout_user(req):
         alert = 'Your Accout Deleted'
         return render(req,'account/signup.html',{'alert':alert})
     return render(req,'account/delete_account.html')
+
+def logout(request):
+    auth_logout(request)
+    return redirect('login')

@@ -8,7 +8,18 @@
     border-radius: 8px;
     padding: 20px;
 }
-
+@media only screen and (max-width: 768px) {
+    .ac-gb{
+        background-color: rgb(54, 56, 56);
+    
+        height: 100%;
+        width: 100%;
+        float: left;
+        margin-left: 30px;
+        border-radius: 8px;
+        padding: 20px;
+    }
+ }
 .l-ac{
     margin-top: 30px;
 }
@@ -30,4 +41,8 @@ margin-top: 60px;
 }
 .delete-bt{
     width: 100px;
+}
+
+.black_gb{
+    background-color: rgb(255, 255, 255);
 }

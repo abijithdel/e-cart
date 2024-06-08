@@ -15,7 +15,7 @@
             <h5 class="l-ac">Last Name : {{user.last_name}}</h5>
             <p class="l-ac"> Join Date : {{user.date_joined}}</p>
             <p class="l-ac"> Last Login : {{user.last_login}}</p>
-            <a href="">log out</a>
+            <a href="{% url 'logout' %}">log out</a>
         </div>
 
         <div class="col-12 col-md-6 col-lg-4">

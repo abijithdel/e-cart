@@ -4,8 +4,8 @@ from . models import Product
 # Create your views here.
 
 def home(req):
-    return render(req,'index.html')
-
+    Products = Product.objects.all()
+    return render(req,'index.html',{ 'Products':Products })
 
 def store_page(req):
     Products = Product.objects.all()
@@ -14,3 +14,6 @@ def store_page(req):
 def products(req, pk):
     Products = Product.objects.get(id=pk)
     return render(req,'store/Product.html',{ 'Product':Products })
+
+def done(req):
+    return render(req,'store/done.html',)
